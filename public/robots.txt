@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tomandjerry.vercel.app
+
+# Sitemaps
+Sitemap: https://tomandjerry.vercel.app/sitemap.xml
