@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
+
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
@@ -27,7 +29,7 @@ export default function ContactForm() {
     setError(null);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/contactus", form);
+      const res = await axios.post(`${API_BASE}/api/contactus`, form);
       setResponseMsg(res.data.message || "Message sent successfully!");
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch (err) {

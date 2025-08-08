@@ -5,24 +5,24 @@ import EventGrid from "../components/EventGrid";
 import BookingSection from "../components/BookingSection";
 
 export const metadata = {
-  title: "About TomandJerry Ice Cream | Boston's Favorite Ice Cream Truck",
+  title: "About Speed Ice Cream | Boston's Favorite Ice Cream Truck",
   description:
-    "Learn about TomandJerry Ice Cream, Boston’s beloved ice cream truck serving joy and delicious flavors across the greater Boston area.",
+    "Learn about Speed Ice Cream, Boston’s beloved ice cream truck serving joy and delicious flavors across the greater Boston area.",
   keywords: [
-    "TomandJerry Ice Cream",
+    "Speed Ice Cream",
     "Boston Ice Cream Truck",
     "About Ice Cream Catering",
     "Event Ice Cream",
   ],
   authors: [
-    { name: "TomandJerry Team", url: "https://tomandjerryicecream.com" },
+    { name: "Speed Team", url: "https://speedicecreamtruck.com" },
   ],
-  metadataBase: new URL("https://tomandjerryicecream.com"),
+  metadataBase: new URL("https://speedicecreamtruck.com"),
   openGraph: {
-    title: "About TomandJerry Ice Cream",
+    title: "About Speed Ice Cream",
     description:
       "Discover the story behind Boston’s favorite ice cream truck, serving smiles one scoop at a time.",
-    url: "https://tomandjerryicecream.com/about",
+    url: "https://speedicecreamtruck.com/about",
     siteName: "TomandJerry Ice Cream",
     images: [
       {
@@ -37,9 +37,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About TomandJerry Ice Cream",
+    title: "About Speed Ice Cream",
     description:
-      "Learn about TomandJerry Ice Cream, spreading joy across Boston with every scoop.",
+      "Learn about Speed Ice Cream, spreading joy across Boston with every scoop.",
     images: ["/og-image-about.jpg"],
     site: "@TomandJerryIce",
   },
@@ -71,7 +71,7 @@ export default function AboutPage() {
             {/* Text Section */}
             <div>
               <h1 className="text-5xl font-extrabold text-pink-600 mb-6 leading-tight drop-shadow-sm">
-                About <span className="text-gray-800">TomandJerry Ice Cream</span>
+                About <span className="text-gray-800">Speed Ice Cream</span>
               </h1>
               <p className="text-lg text-gray-700 leading-relaxed mb-5">
                 Welcome to TomandJerry Ice Cream — a Lynnfield, MA-based sensation bringing joy one scoop at a time across the greater Boston area. Whether you're in the North Shore, Metro West, or Southern New Hampshire, our whimsical truck is just around the corner.

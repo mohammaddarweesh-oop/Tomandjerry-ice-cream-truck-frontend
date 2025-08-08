@@ -21,14 +21,14 @@ export const metadata = {
     "Event Ice Cream",
   ],
   authors: [
-    { name: "TomandJerry Team", url: "https://tomandjerryicecream.com" },
+    { name: "TomandJerry Team", url: "https://speedicecreamtruck.com" },
   ],
-  metadataBase: new URL("https://tomandjerryicecream.com"),
+  metadataBase: new URL("https://speedicecreamtruck.com"),
   openGraph: {
     title: "TomandJerry Ice Cream | Boston Events",
     description:
       "Boston’s most loved ice cream truck for events, weddings, and birthdays.",
-    url: "https://tomandjerryicecream.com",
+    url: "https://speedicecreamtruck.com",
     siteName: "TomandJerry Ice Cream",
     images: [
       {
@@ -51,7 +51,7 @@ export const metadata = {
   },
 };
 
-const API_BASE = process.env.API_BASE || "http://localhost:4000";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 
 async function getProducts() {
   try {

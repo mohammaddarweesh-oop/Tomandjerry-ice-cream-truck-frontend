@@ -9,6 +9,7 @@ const BookingForm = dynamic(() => import("./BookingForm"), {
   ssr: false,
 });
 
+
 export default function BookingSection() {
   return (
     <section className="bg-pink-50  py-16 px-4 sm:px-6 md:px-12 lg:py-24">
@@ -17,7 +18,7 @@ export default function BookingSection() {
         <div className="w-full md:w-1/2 relative">
           <div className="rounded-2xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
             <Image
-              src="/cool-cow-boston.webp"
+              src="/ice.jpg"
               alt="Ice Cream Truck Booking"
               width={800}
               height={600}

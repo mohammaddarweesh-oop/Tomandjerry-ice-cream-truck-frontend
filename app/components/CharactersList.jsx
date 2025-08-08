@@ -8,7 +8,8 @@ import Image from "next/image";
 import ContactCards from "./ContactCards";
 import Head from "next/head";
 
-export default function CharactersList({ baseUrl = "http://localhost:4000" }) {
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
+export default function CharactersList({ baseUrl = API_BASE || "http://localhost:4000" }) {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -74,7 +75,7 @@ export default function CharactersList({ baseUrl = "http://localhost:4000" }) {
               >
                 <div className="overflow-hidden rounded-2xl mb-4">
                   <Image
-                    src={`http://localhost:4000${
+                    src={`${baseUrl}${
                       char.image.startsWith("/") ? "" : "/"
                     }${char.image}`}
                     alt={char.name}

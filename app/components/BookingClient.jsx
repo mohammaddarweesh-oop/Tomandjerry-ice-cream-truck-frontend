@@ -5,6 +5,8 @@ import Image from "next/image";
 import ContactCards from "./ContactCards";
 import BookingForm from "./BookingForm";
 
+
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 export default function BookingPage() {
   const [form, setForm] = useState({
     name: "",
@@ -27,7 +29,7 @@ export default function BookingPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/booking", form);
+      await axios.post(`${API_BASE}/api/booking`, form);
       setMessage("Your booking request has been submitted successfully!");
       setForm({
         name: "",

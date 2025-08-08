@@ -165,6 +165,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 export default function BookingForm() {
   const searchParams = useSearchParams();
 
@@ -225,7 +226,7 @@ Duration: ${searchParams.get("duration") || ""}
     setIsSubmitting(true);
     setMessage(null);
     try {
-      await axios.post("http://localhost:4000/api/booking", form);
+      await axios.post(`${API_BASE}/api/booking`, form);
       setMessage("Your booking request has been submitted successfully!");
       setForm(initialFormState);
     } catch (err) {

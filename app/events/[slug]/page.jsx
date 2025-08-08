@@ -96,28 +96,28 @@ export async function generateMetadata({ params }) {
   const event = eventData[params.slug];
   if (!event) {
     return {
-      title: "Event Not Found | TomandJerry Ice Cream",
-      description: "Book TomandJerry Ice Cream for your event in Boston.",
+      title: "Event Not Found | Speed Ice Cream",
+      description: "Book Speed Ice Cream for your event in Boston.",
     };
   }
 
   return {
-    title: `${event.title} | TomandJerry Ice Cream`,
+    title: `${event.title} | Speed Ice Cream`,
     description: event.description,
     keywords: [
-      "TomandJerry Ice Cream",
+      "Speed Ice Cream",
       "Boston Ice Cream Truck",
       "Event Catering",
       event.title,
     ],
     authors: [
-      { name: "TomandJerry Team", url: "https://tomandjerryicecream.com" },
+      { name: "TomandJerry Team", url: "https://speedicecreamtruck.com" },
     ],
-    metadataBase: new URL("https://tomandjerryicecream.com"),
+    metadataBase: new URL("https://speedicecreamtruck.com"),
     openGraph: {
       title: `${event.title} | TomandJerry Ice Cream`,
       description: event.description,
-      url: `https://tomandjerryicecream.com/events/${params.slug}`,
+      url: `https://speedicecreamtruck.com/events/${params.slug}`,
       siteName: "TomandJerry Ice Cream",
       images: [
         {
@@ -132,10 +132,10 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${event.title} | TomandJerry Ice Cream`,
+      title: `${event.title} | Speed Ice Cream`,
       description: event.description,
       images: [event.image],
-      site: "@TomandJerryIce",
+      site: "@Speedicecreamtruck",
     },
   };
 }

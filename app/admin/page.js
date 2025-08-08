@@ -9,11 +9,12 @@ export default function AdminLogin() {
   const [error, setError] = useState(null);
   const router = useRouter();
 
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/admin/login",
+        `${API_BASE}/api/admin/login`,
         { email, password },
         { withCredentials: true }
       );

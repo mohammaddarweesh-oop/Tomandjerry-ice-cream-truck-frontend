@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CharactersManager from "@/app/components/CharactersManager";
 
-
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 export default function AdminDashboard() {
   const router = useRouter();
   const [bookings, setBookings] = useState([]);
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await axios.get("http://localhost:4000/api/admin/session", {
+        await axios.get(`${API_BASE}/api/admin/session`, {
           withCredentials: true,
         });
 
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
   const fetchBookings = async () => {
     setLoadingBookings(true);
     try {
-      const res = await axios.get("http://localhost:4000/api/admin/bookings", {
+      const res = await axios.get(`${API_BASE}/api/admin/bookings`, {
         withCredentials: true,
       });
       setBookings(res.data.bookings || []);
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
   const handleDeleteBooking = async (id) => {
     if (!confirm("Are you sure you want to delete this booking?")) return;
     try {
-      await axios.delete(`http://localhost:4000/api/admin/bookings/${id}`, {
+      await axios.delete(`${API_BASE}/api/admin/bookings/${id}`, {
         withCredentials: true,
       });
       setBookingMessage("Booking deleted successfully");
@@ -139,13 +139,13 @@ export default function AdminDashboard() {
     try {
       if (editingBooking) {
         await axios.put(
-          `http://localhost:4000/api/admin/bookings/${editingBooking._id}`,
+          `${API_BASE}/api/admin/bookings/${editingBooking._id}`,
           bookingForm,
           { withCredentials: true }
         );
         setBookingMessage("Booking updated successfully");
       } else {
-        await axios.post("http://localhost:4000/api/booking", bookingForm);
+        await axios.post(`${API_BASE}http://localhost:4000/api/booking`, bookingForm);
         setBookingMessage("Booking added successfully");
       }
       cancelEditBooking();
@@ -160,7 +160,7 @@ export default function AdminDashboard() {
 
     try {
       await axios.put(
-        `http://localhost:4000/api/admin/bookings/${booking._id}`,
+        `${API_BASE}/api/admin/bookings/${booking._id}`,
         { ...booking, completed: true },
         { withCredentials: true }
       );
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/api/admin/logout",
+        `${API_BASE}/api/admin/logout`,
         {},
         { withCredentials: true }
       );
@@ -187,7 +187,7 @@ export default function AdminDashboard() {
   const fetchProducts = async () => {
     setLoadingProducts(true);
     try {
-      const res = await axios.get("http://localhost:4000/api/products");
+      const res = await axios.get(`"${API_BASE}/api/products`);
       setProducts(res.data || []);
       console.log("products : ", res.data);
       setErrorProducts(null);
@@ -227,7 +227,7 @@ export default function AdminDashboard() {
   const handleDeleteProduct = async (id) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
     try {
-      await axios.delete(`http://localhost:4000/api/products/${id}`, {
+      await axios.delete(`${API_BASE}/api/products/${id}`, {
         withCredentials: true,
       });
       setProductMessage("Product deleted successfully");
@@ -255,7 +255,7 @@ export default function AdminDashboard() {
     let res;
     if (editingProduct) {
       res = await axios.put(
-        `http://localhost:4000/api/products/${editingProduct._id}`,
+        `${API_BASE}/api/products/${editingProduct._id}`,
         formData,
         {
           withCredentials: true,
@@ -265,7 +265,7 @@ export default function AdminDashboard() {
       setProductMessage("Product updated successfully");
     } else {
       res = await axios.post(
-        "http://localhost:4000/api/products",
+        `${API_BASE}/api/products`,
         formData,
         {
           withCredentials: true,

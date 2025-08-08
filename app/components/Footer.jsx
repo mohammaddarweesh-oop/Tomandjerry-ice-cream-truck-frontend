@@ -245,7 +245,7 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className="text-center text-xs mt-10 text-white/80">
-          © {new Date().getFullYear()} TomandJerry Ice Cream. All rights reserved.
+          © {new Date().getFullYear()} Sonic Ice Cream. All rights reserved.
           <br />
           <a
             href="https://www.dvyns.com/"

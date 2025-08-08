@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import Image from "next/image";
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 
 export default function Characters() {
   const [characters, setCharacters] = useState([]);
@@ -64,7 +64,7 @@ export default function Characters() {
       let res;
       if (editId) {
         res = await axios.put(
-          `http://localhost:4000/api/characters/${editId}`,
+          `${baseUrl}/api/characters/${editId}`,
           form,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -73,7 +73,7 @@ export default function Characters() {
         );
         setMessage("Character updated successfully");
       } else {
-        res = await axios.post("http://localhost:4000/api/characters", form, {
+        res = await axios.post(`${baseUrl}/api/characters`, form, {
           headers: { "Content-Type": "multipart/form-data" },
           withCredentials: true,
         });
@@ -91,7 +91,7 @@ export default function Characters() {
   async function handleDelete(id) {
     if (!confirm("Are you sure you want to delete this character?")) return;
     try {
-      await axios.delete(`http://localhost:4000/api/characters/${id}`, {
+      await axios.delete(`${baseUrl}/api/characters/${id}`, {
         withCredentials: true,
       });
       setMessage("Character deleted successfully");
@@ -251,7 +251,7 @@ export default function Characters() {
               className="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col"
             >
               <Image
-                src={`http://localhost:4000${
+                src={`${baseUrl}${
                   char.image.startsWith("/") ? "" : "/"
                 }${char.image}`}
                 alt={char.name}

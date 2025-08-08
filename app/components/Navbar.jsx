@@ -40,7 +40,7 @@ export default function Navbar() {
     <nav className="font-['Poppins'] fixed top-0 w-full z-50 bg-white/20 backdrop-blur shadow-md px-6 py-4 flex justify-between items-center">
       <Link href="/">
         <h1 className="text-2xl font-bold text-pink-600 font-berkshire">
-          TomandJerry ice cream
+          Speed ice cream
         </h1>
       </Link>
 
