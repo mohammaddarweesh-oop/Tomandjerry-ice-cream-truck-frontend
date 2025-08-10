@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tomandjerry.vercel.app
+Host: http://speedicecreamtruck.com
 
 # Sitemaps
-Sitemap: https://tomandjerry.vercel.app/sitemap.xml
+Sitemap: http://speedicecreamtruck.com/sitemap.xml

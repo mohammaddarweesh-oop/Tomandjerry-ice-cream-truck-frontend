@@ -8,11 +8,11 @@ import BookingSection from "./components/BookingSection";
 import SpecialOffersSlider from "./components/OffersSlider";
 
 export const metadata = {
-  title: "TomandJerry Ice Cream | Boston's Favorite Ice Cream Truck",
+  title: "speed ice cream truck Ice Cream | Boston's Favorite Ice Cream Truck",
   description:
-    "Book the TomandJerry Ice Cream Truck for your event in Boston. We serve happiness with every scoop of our delicious handcrafted flavors.",
+    "Book the speed ice cream truck Ice Cream Truck for your event in Boston. We serve happiness with every scoop of our delicious handcrafted flavors.",
   keywords: [
-    "TomandJerry Ice Cream",
+    "Speed Ice Cream",
     "soft serve ice cream Boston",
     "buy ice cream near me",
     "Boston Ice Cream Truck",
@@ -21,7 +21,7 @@ export const metadata = {
     "Event Ice Cream",
   ],
   authors: [
-    { name: "TomandJerry Team", url: "https://speedicecreamtruck.com" },
+    { name: "Speed Team", url: "https://speedicecreamtruck.com" },
   ],
   metadataBase: new URL("https://speedicecreamtruck.com"),
   openGraph: {
@@ -29,13 +29,13 @@ export const metadata = {
     description:
       "Boston’s most loved ice cream truck for events, weddings, and birthdays.",
     url: "https://speedicecreamtruck.com",
-    siteName: "TomandJerry Ice Cream",
+    siteName: "Speed Ice Cream",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "TomandJerry Ice Cream Truck",
+        alt: "Speed Ice Cream Truck",
       },
     ],
     locale: "en_US",
@@ -43,33 +43,58 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TomandJerry Ice Cream",
+    title: "Speed Ice Cream",
     description:
       "Book Boston’s favorite ice cream truck and spread joy at your event.",
     images: ["/og-image.jpg"],
-    site: "@TomandJerryIce",
+    site: "@Speedicecream",
   },
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 
+// async function getProducts() {
+//   try {
+//     const res = await fetch(`${API_BASE}/api/products`);
+
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch products");
+//     }
+
+//     const data = await res.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     return [];
+//   }
+// }
+
 async function getProducts() {
   try {
     const res = await fetch(`${API_BASE}/api/products`, {
-      cache: "no-store",
+      next: { revalidate: 60 }, // تحديث كل 60 ثانية
     });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch products");
+      console.error(`Failed to fetch products: ${res.status}`);
+      return [];
     }
 
-    const data = await res.json();
-    return data;
+    const text = await res.text();
+
+    try {
+      const data = JSON.parse(text);
+      return data;
+    } catch {
+      console.error("API response is not valid JSON:", text.slice(0, 100));
+      return [];
+    }
   } catch (error) {
     console.error("Error fetching products:", error);
     return [];
   }
 }
+
 
 export default async function Home() {
   const products = await getProducts();

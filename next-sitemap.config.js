@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://tomandjerry.vercel.app',
+  siteUrl: 'http://speedicecreamtruck.com',
   generateRobotsTxt: true, 
   sitemapSize: 5000,
 };
