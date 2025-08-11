@@ -52,6 +52,7 @@ export const metadata = {
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
+// const API_BASE =  "http://localhost:4000";
 
 // async function getProducts() {
 //   try {
@@ -71,7 +72,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:4000";
 
 async function getProducts() {
   try {
-    const res = await fetch(`${API_BASE}/api/products`, {
+    const res = await fetch(`${API_BASE}/api/products`, { /**   */
       next: { revalidate: 60 }, // تحديث كل 60 ثانية
     });
 
